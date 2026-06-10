@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThermoConvert Elite | Premium Temperature Converter</title>
+  <meta name="description" content="A beautifully animated, high-precision temperature converter supporting Celsius, Fahrenheit, and Kelvin with dynamic fluid gauges, real-time calculations, and light/dark themes.">
+  
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Animated Background Elements -->
+  <div class="bg-glow bg-glow-1" id="bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2" id="bg-glow-2"></div>
+  
+  <div class="app-container">
+    <!-- Header -->
+    <header class="main-header">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z" />
+            <path d="M12 6v6" class="thermometer-line" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Thermo<span>Convert</span></h1>
+          <span class="badge">PRO</span>
+        </div>
+      </div>
+      
+      <!-- Theme Toggle -->
+      <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle light and dark mode">
+        <!-- Sun Icon -->
+        <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <!-- Moon Icon -->
+        <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+    </header>
+
+    <!-- Main Dashboard Grid -->
+    <main class="dashboard-grid">
+      
+      <!-- Left Panel: Controls & Input -->
+      <section class="glass-panel panel-controls">
+        <h2 class="panel-title">Conversion Console</h2>
+        
+        <!-- Input Field Container -->
+        <div class="input-group">
+          <label for="tempInput" class="input-label">Enter Temperature</label>
+          <div class="input-wrapper" id="inputWrapper">
+            <input type="text" id="tempInput" placeholder="e.g., 25" autocomplete="off" aria-invalid="false">
+            <span class="input-suffix" id="inputSuffix">°C</span>
+          </div>
+          <div class="validation-message" id="validationMessage">Please enter a valid numeric value</div>
+        </div>
+
+        <!-- Presets -->
+        <div class="presets-section">
+          <span class="section-label">Quick Presets</span>
+          <div class="presets-grid">
+            <button class="preset-btn" data-val="0" data-unit="C" type="button">
+              <span class="preset-icon">❄️</span>
+              <span class="preset-text">Ice Freezes</span>
+              <span class="preset-temp">0°C</span>
+            </button>
+            <button class="preset-btn" data-val="21" data-unit="C" type="button">
+              <span class="preset-icon">🛋️</span>
+              <span class="preset-text">Room Temp</span>
+              <span class="preset-temp">21°C</span>
+            </button>
+            <button class="preset-btn" data-val="37" data-unit="C" type="button">
+              <span class="preset-icon">🌡️</span>
+              <span class="preset-text">Body Temp</span>
+              <span class="preset-temp">37°C</span>
+            </button>
+            <button class="preset-btn" data-val="100" data-unit="C" type="button">
+              <span class="preset-icon">🔥</span>
+              <span class="preset-text">Water Boils</span>
+              <span class="preset-temp">100°C</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Unit Selectors -->
+        <div class="unit-selector-container">
+          <div class="unit-selector-box">
+            <label for="fromUnit" class="select-label">From</label>
+            <div class="custom-select-wrapper">
+              <select id="fromUnit" class="custom-select">
+                <option value="C" selected>Celsius (°C)</option>
+                <option value="F">Fahrenheit (°F)</option>
+                <option value="K">Kelvin (K)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Swap Button -->
+          <div class="swap-action">
+            <button type="button" class="swap-btn" id="swapBtn" aria-label="Swap Conversion Units">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="17 1 21 5 17 9" />
+                <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+                <polyline points="7 23 3 19 7 15" />
+                <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="unit-selector-box">
+            <label for="toUnit" class="select-label">To</label>
+            <div class="custom-select-wrapper">
+              <select id="toUnit" class="custom-select">
+                <option value="C">Celsius (°C)</option>
+                <option value="F" selected>Fahrenheit (°F)</option>
+                <option value="K">Kelvin (K)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real-time toggle -->
+        <div class="realtime-toggle-bar">
+          <span class="realtime-label">Instant Conversion</span>
+          <label class="switch" for="instantToggle">
+            <input type="checkbox" id="instantToggle" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <!-- Convert Trigger Button -->
+        <button type="button" class="convert-btn" id="convertBtn">
+          <span>Convert Temperature</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </button>
+      </section>
+
+      <!-- Right Panel: Results & Visualization -->
+      <section class="glass-panel panel-results">
+        
+        <!-- Primary Result Card -->
+        <div class="result-card">
+          <div class="result-label">Converted Output</div>
+          <div class="result-value-display">
+            <span class="result-number" id="resultVal">32.00</span>
+            <span class="result-unit" id="resultUnit">°F</span>
+          </div>
+        </div>
+
+        <!-- Visualization & Multi-Unit Panel -->
+        <div class="visualizer-grid">
+          
+          <!-- Thermometer Visual Gauge -->
+          <div class="thermometer-widget">
+            <div class="thermometer-marks">
+              <span>100°C</span>
+              <span>80°C</span>
+              <span>60°C</span>
+              <span>40°C</span>
+              <span>20°C</span>
+              <span>0°C</span>
+              <span>-20°C</span>
+            </div>
+            
+            <div class="thermometer-tube-container">
+              <div class="thermometer-cap"></div>
+              <div class="thermometer-glass">
+                <div class="thermometer-fluid" id="thermoFluid"></div>
+              </div>
+              <div class="thermometer-bulb">
+                <div class="thermometer-bulb-glow" id="thermoBulbGlow"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Multi-unit Quick View Cards -->
+          <div class="all-units-panel">
+            <h3 class="panel-subtitle">Equivalent Scales</h3>
+            
+            <div class="mini-unit-card" data-unit="C">
+              <div class="mini-card-info">
+                <span class="mini-card-name">Celsius</span>
+                <span class="mini-card-symbol">°C</span>
+              </div>
+              <div class="mini-card-val" id="cardCVal">0.00</div>
+            </div>
+            
+            <div class="mini-unit-card" data-unit="F">
+              <div class="mini-card-info">
+                <span class="mini-card-name">Fahrenheit</span>
+                <span class="mini-card-symbol">°F</span>
+              </div>
+              <div class="mini-card-val" id="cardFVal">32.00</div>
+            </div>
+            
+            <div class="mini-unit-card" data-unit="K">
+              <div class="mini-card-info">
+                <span class="mini-card-name">Kelvin</span>
+                <span class="mini-card-symbol">K</span>
+              </div>
+              <div class="mini-card-val" id="cardKVal">273.15</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mathematical Formula Card -->
+        <div class="formula-card">
+          <div class="formula-header">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+            </svg>
+            <span>Formula Explainer</span>
+          </div>
+          <div class="formula-equation" id="formulaText">
+            (0°C × 9/5) + 32 = 32.00°F
+          </div>
+          <div class="formula-desc" id="formulaDesc">
+            Multiply Celsius by 9/5 and add 32.
+          </div>
+        </div>
+        
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <p>&copy; 2026 ThermoConvert Elite. Designed with pure HTML, CSS, and JS.</p>
+    </footer>
+  </div>
+
+  <!-- JS Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
