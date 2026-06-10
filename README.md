@@ -81,14 +81,22 @@ The objective of this project is to:
 OIBSIP_WebDevelopment_Task1
 │
 ├── index.html
+
 ├── styles.css
+
 ├── script.js
+
 ├── assets/
-│   
+
+  
 ├── screenshots/
-│   ├── homepage.png
-│   ├── darkmode.png
-│   └── mobileview.png
+
+   ├── homepage.png
+
+   ├── darkmode.png
+
+   └── mobileview.png
+
 └── README.md
 
 
