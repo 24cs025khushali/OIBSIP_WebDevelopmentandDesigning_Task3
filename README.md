@@ -79,7 +79,8 @@ The objective of this project is to:
 ## 📂 Project Structure
 
 OIBSIP_WebDevelopment_Task1
-│
+
+
 ├── index.html
 
 ├── styles.css
@@ -91,7 +92,7 @@ OIBSIP_WebDevelopment_Task1
   
 ├── screenshots/
 
-   ├── homepage.png
+  ├── homepage.png
 
    ├── darkmode.png
 
