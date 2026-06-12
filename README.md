@@ -7,8 +7,11 @@ Temperature Converter Website
 ## 👩‍💻 Internship Details
 
 **Organization:** Oasis Infobyte
+
 **Internship Domain:** Web Development and Designing
+
 **Task Number:** Task3
+
 **Project Name:** Temperature Converter Website
 
 
