@@ -206,6 +206,6 @@ The project successfully meets all task requirements and provides a modern, resp
 ## 👩‍🎓 Author
 
 **Khushali Gohel**
-Web Development and Designing Intern
+Web Development and Designing Intern at 
 Oasis Infobyte Internship Program (OIB-SIP)
 
